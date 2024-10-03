@@ -1,15 +1,18 @@
 import express from "express";
 import { dbConnect } from "./config/db.config";
-import productRouter from "./routes/products.route";
+import productRouter from "./routes/products";
 import "dotenv/config";
 
 const app = express();
 const port = process.env.PORT;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
-  res.send("Hello there, I am Pramis");
+  res.send("Hello there, I am Pramis Gurung");
 });
 
+//Routes
 app.use("/products", productRouter);
 
 app.get("*", (req, res) => {
